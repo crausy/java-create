@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elemek létrehozása feladat 2.</title>
+</head>
+<body>
+    <h1 id = "title">itallap</h1>
+    <button onclick="startol()" id="startgomb">START</button>
+    <div id="elsoBekezdesHelye"></div>
+    <div id="valasz"></div>
+
+    <script>
+        function startol()
+        {
+            document.getElementById("startgomb").disabled = true;
+
+            let bekezd = document.createElement('p');
+            bekezd.innerText = "Jó napot! Hozhatom az itallapot?";
+            bekezd.setAttribute("id", "elsobekezd");
+            document.getElementById("elsoBekezdesHelye").appendChild(bekezd);
+
+            let btn1 = document.createElement('BUTTON');
+            btn1.innerHTML = "Igen!";
+            btn1.setAttribute("id", "igengomb");
+            document.getElementById("elsoBekezdesHelye").appendChild(btn1);
+            btn1.onclick = function() {lista()};
+
+
+            let btn2 = document.createElement('BUTTON');
+            btn2.innerHTML = "Nem!";
+            btn2.setAttribute("id", "nemgomb");
+            document.getElementById("elsoBekezdesHelye").appendChild(btn2);
+            btn2.onclick = function() {viszlat()};
+
+        }
+
+        function lista()
+        {
+            document.getElementById("igengomb").disabled = true;
+            document.getElementById("nemgomb").disabled = true;
+
+            var lista = document.createElement('ul');
+            lista.setAttribute("id", "lista");
+            document.getElementById("valasz").appendChild(lista);
+
+            var elso = document.createElement('li');
+            elso.innerText = "Kóla";
+            elso.setAttribute("id", "ital");
+            document.getElementById("lista").appendChild(elso);
+
+            var box1 = document.createElement("INPUT");
+            box1.setAttribute("type", "checkbox");
+            box1.setAttribute("id", "checkbox")
+            document.getElementById("lista").appendChild(box1);
+
+            var masodik = document.createElement('li');
+            masodik.innerText = "Fanta";
+            masodik.setAttribute("id", "ital");
+            document.getElementById("lista").appendChild(masodik);
+
+            var box2 = document.createElement("INPUT");
+            box2.setAttribute("type", "checkbox");
+            box2.setAttribute("id", "checkbox")
+            document.getElementById("lista").appendChild(box2);
+
+            var harmadik = document.createElement('li');
+            harmadik.innerText = "Víz";
+            harmadik.setAttribute("id", "ital");
+            document.getElementById("lista").appendChild(harmadik);
+
+            var box3 = document.createElement("INPUT");
+            box3.setAttribute("type", "checkbox");
+            box3.setAttribute("id", "checkbox")
+            document.getElementById("lista").appendChild(box3);
+
+            var negyedik = document.createElement('li');
+            negyedik.innerText = "Sör";
+            negyedik.setAttribute("id", "ital");
+            document.getElementById("lista").appendChild(negyedik);
+
+            var box4 = document.createElement("INPUT");
+            box4.setAttribute("type", "checkbox");
+            box4.setAttribute("id", "checkbox")
+            document.getElementById("lista").appendChild(box4);
+
+            var otodik = document.createElement('li');
+            otodik.innerText = "Bor";
+            otodik.setAttribute("id", "ital");
+            document.getElementById("lista").appendChild(otodik);
+
+            var box5 = document.createElement("INPUT");
+            box5.setAttribute("type", "checkbox");
+            box5.setAttribute("id", "checkbox")
+            document.getElementById("lista").appendChild(box5);
+
+            var submit = document.createElement("INPUT");
+            submit.innerText = "Rendelés!";
+            submit.setAttribute("type", "submit");
+            submit.setAttribute("value", "Rendelés!");
+            submit.setAttribute("id", "submit");
+            document.getElementById("valasz").appendChild(submit);
+            submit.onclick = function() {reload()};
+
+        }
+
+        function reload()
+        {
+            location.reload();
+        }
+
+        function viszlat()
+        {
+            document.getElementById("igengomb").disabled = true;
+            document.getElementById("nemgomb").disabled = true;
+
+            let koszon = document.createElement('p');
+            koszon.innerText = "További szép napot, viszont látásra!";
+            koszon.setAttribute("id", "elkoszones");
+            document.getElementById("valasz").appendChild(koszon);
+
+            setTimeout(() => {
+                reload();
+            }, 1500);
+        }
+
+    </script>
+
+    <style>
+        body
+        {
+            background-color: black;
+            color: gray;
+            text-align: center;
+            transition: 0.5s ease-in-out;
+            word-wrap: break-word;
+        }
+
+        #title
+        {
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: 0.3s ease-in-out;
+        }
+
+        #title:hover
+        {
+            letter-spacing: 4px;
+            color: whitesmoke;
+        }
+
+        #elsobekezd, #elkoszones, #ital
+        {
+            font-size: 22px;
+            text-align: center;
+            color: whitesmoke;
+            letter-spacing: 1.5px;
+            font-style: oblique;
+        }
+
+        button, input
+        {
+            border: 0;
+            outline: none;
+            padding: 10px;
+            margin: 10px;
+            transition: 0.2s ease-in-out;
+            border-radius: 5px;
+        }
+        button:focus, button:active, button:hover, #submit:hover
+        {
+            outline: none;
+            color: whitesmoke;
+            background-color: black;
+            border: 1px solid;
+            box-shadow: 2px 5px whitesmoke;
+        }
+
+        #submit
+        {
+            margin-top: 40px;
+        }
+
+        input:hover
+        {
+            outline: none;
+            color: whitesmoke;
+            background-color: black;
+            border: 1px solid;
+        }
+
+        button:disabled, button[disabled]
+        {
+            outline: none;
+            border: none;
+            color: whitesmoke;
+            background-color: crimson;
+            box-shadow: none;
+            opacity: 0.6;
+        }
+
+        #lista
+        {
+            margin: 0 auto;
+            padding-top: 100px;
+            text-decoration: none;
+        }
+
+        #ital
+        {
+            display: inline;
+            padding: 20px;
+            margin: 20px;
+            color: whitesmoke;
+            list-style: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        @media screen and (max-width: 800px)
+        {
+
+            #lista
+            {
+                padding-top: 10px;
+            }
+
+            #ital
+            {
+                text-align: left;
+                transform: translateY(-10%);
+                display: list-item;
+                margin: 5px;
+                padding: 5px;
+            }
+
+            #checkbox
+            {
+                position: relative;
+                left: -45%;
+            }
+        }
+
+    </style>
+
+</body>
+</html>
