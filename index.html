@@ -12,6 +12,10 @@
     <div id="valasz"></div>
 
     <script>
+
+        var box1, box2, box3, box4, box5;
+
+
         function startol()
         {
             document.getElementById("startgomb").disabled = true;
@@ -50,9 +54,9 @@
             elso.setAttribute("id", "ital");
             document.getElementById("lista").appendChild(elso);
 
-            var box1 = document.createElement("INPUT");
+            box1 = document.createElement("INPUT");
             box1.setAttribute("type", "checkbox");
-            box1.setAttribute("id", "checkbox")
+            box1.setAttribute("id", "checkbox1")
             document.getElementById("lista").appendChild(box1);
 
             var masodik = document.createElement('li');
@@ -60,9 +64,9 @@
             masodik.setAttribute("id", "ital");
             document.getElementById("lista").appendChild(masodik);
 
-            var box2 = document.createElement("INPUT");
+            box2 = document.createElement("INPUT");
             box2.setAttribute("type", "checkbox");
-            box2.setAttribute("id", "checkbox")
+            box2.setAttribute("id", "checkbox2")
             document.getElementById("lista").appendChild(box2);
 
             var harmadik = document.createElement('li');
@@ -70,9 +74,9 @@
             harmadik.setAttribute("id", "ital");
             document.getElementById("lista").appendChild(harmadik);
 
-            var box3 = document.createElement("INPUT");
+            box3 = document.createElement("INPUT");
             box3.setAttribute("type", "checkbox");
-            box3.setAttribute("id", "checkbox")
+            box3.setAttribute("id", "checkbox3")
             document.getElementById("lista").appendChild(box3);
 
             var negyedik = document.createElement('li');
@@ -80,9 +84,9 @@
             negyedik.setAttribute("id", "ital");
             document.getElementById("lista").appendChild(negyedik);
 
-            var box4 = document.createElement("INPUT");
+            box4 = document.createElement("INPUT");
             box4.setAttribute("type", "checkbox");
-            box4.setAttribute("id", "checkbox")
+            box4.setAttribute("id", "checkbox4")
             document.getElementById("lista").appendChild(box4);
 
             var otodik = document.createElement('li');
@@ -90,9 +94,9 @@
             otodik.setAttribute("id", "ital");
             document.getElementById("lista").appendChild(otodik);
 
-            var box5 = document.createElement("INPUT");
+            box5 = document.createElement("INPUT");
             box5.setAttribute("type", "checkbox");
-            box5.setAttribute("id", "checkbox")
+            box5.setAttribute("id", "checkbox5")
             document.getElementById("lista").appendChild(box5);
 
             var submit = document.createElement("INPUT");
@@ -101,12 +105,34 @@
             submit.setAttribute("value", "Rendelés!");
             submit.setAttribute("id", "submit");
             document.getElementById("valasz").appendChild(submit);
-            submit.onclick = function() {reload()};
 
+            submit.onclick = function() {ellenorzes()};
+
+        }
+
+        function ellenorzes()
+        {
+            var tomb = [box1.checked, box2.checked, box3.checked, box4.checked, box5.checked]
+            var seged = 0;
+            for(let i = 0; i < 5; i++)
+            {
+                if(tomb[i] == true)
+                    seged++;
+            }
+            if(seged == 0)
+            {
+                document.getElementById("valasz").innerHTML = " "
+                alert("Kérem válasszon legalább egy italt!")
+                lista();
+            }
+            else
+                if(seged > 0)
+                    reload();
         }
 
         function reload()
         {
+            submit.onclick = alert("Rendelését felvettük, köszönjük vásárlását!")
             location.reload();
         }
 
@@ -121,7 +147,7 @@
             document.getElementById("valasz").appendChild(koszon); */
 
             alert("További szép napot, viszont látásra!");
-            reload();
+            location.reload();
 
             /*setTimeout(() => {
                 reload();
@@ -238,7 +264,7 @@
                 padding: 5px;
             }
 
-            #checkbox
+            #checkbox1, #checkbox2, #checkbox3, #checkbox4, #checkbox5
             {
                 position: relative;
                 left: -45%;
